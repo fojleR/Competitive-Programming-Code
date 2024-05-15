@@ -1,0 +1,58 @@
+#include<bits/stdc++.h>
+
+
+using namespace std;
+
+
+#define ll              long long
+#define pb              push_back
+#define PI              acos(-1.0)
+#define MEM(a,x)        memset(a,x,sizeof(a))
+#define fast           ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+const int mx = 200005;
+const int mod = 1e9 + 7;
+
+void solve(){
+    ll n, k;
+    cin >> n >> k;
+    priority_queue< pair< ll, int > > q, qq;
+    for(int i = 0; i < n; i++){
+        ll x;
+        cin >> x;
+        x = x % k + k;
+        q.push({x, (i + 1) * -1});
+    }
+
+    // while(!q.empty()){
+
+    // }
+
+    while(!q.empty()){
+        ll xx = q.top().first;
+        ll x = q.top().second;
+        q.pop();
+        //cout << xx << endl;
+        xx = xx - k;
+        //cout << xx << endl;
+        if(xx <= 0){
+            cout << x * -1 << " ";
+        }
+        else{
+            q.push({xx, x});
+        }
+    }
+    cout << endl;
+}
+
+
+int main(){
+    fast
+    int t = 1;
+    cin >> t;
+    int cse = 0;
+    while(t--){
+        //cout << "Case " << ++cse << ": ";
+        solve();
+    }
+    return 0;
+}

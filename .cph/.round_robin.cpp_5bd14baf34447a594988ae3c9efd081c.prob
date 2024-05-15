@@ -1,0 +1,1 @@
+{"name":"Local: round_robin","url":"c:\\Users\\ASUS\\OneDrive\\Documents\\CP\\round_robin.cpp","tests":[{"id":1688285432791,"input":"6\n5 0\n6 1\n3 2\n1 3\n5 4\n4 6\n4","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ASUS\\OneDrive\\Documents\\CP\\round_robin.cpp","group":"local","local":true}

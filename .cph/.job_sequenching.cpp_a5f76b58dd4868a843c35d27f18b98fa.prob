@@ -1,0 +1,1 @@
+{"name":"Local: job_sequenching","url":"c:\\Users\\ASUS\\OneDrive\\Documents\\CP\\job_sequenching.cpp","tests":[{"id":1700657189523,"input":"7\n1 4 70\n2 3 40\n3 6 10\n4 4 50\n5 1 30\n6 4 20\n7 2 60","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ASUS\\OneDrive\\Documents\\CP\\job_sequenching.cpp","group":"local","local":true}

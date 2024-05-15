@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+
+
+using namespace std;
+
+
+#define ll              long long
+#define pb              push_back
+#define PI              acos(-1.0)
+#define MEM(a,x)        memset(a,x,sizeof(a))
+#define fast           ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
+const int mx = 200005;
+const int mod = 1e9 + 7;
+
+// ================================== take ip/op like vector,pairs directly!==================================
+template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
+template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
+template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pair<typC,typD> &a) { return cout<<a.first<<' '<<a.second; }
+template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
+template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
+// ===================================END Of the input module ==========================================
+
+
+void solve(){
+    ll n, k;
+    cin >> n >> k;
+    ll a[n];
+    ll sum = 0;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        sum = (sum +  (a[i] + mod) % mod) % mod;
+    }
+    ll tm = 0;
+    ll mxsum = 0;
+    for(int i = 0; i < n; i++){
+        mxsum = max(mxsum, tm);
+        tm += a[i];
+        if(tm < 0)tm = 0;
+    }
+    mxsum = max(mxsum, tm);
+    // cout << mxsum << endl;
+    mxsum = mxsum % mod;
+    for(int i = 0; i < k; i++){
+        // cout << mxsum << endl;
+        sum = (sum + mxsum + mod) % mod;
+        mxsum = (mxsum + mxsum + mod) % mod;
+    }
+    cout << sum << endl;
+}
+
+
+int main(){
+    fast
+    int t = 1;
+    cin >> t;
+    int cse = 0;
+    while(t--){
+        //cout << "Case " << ++cse << ": ";
+        solve();
+    }
+    return 0;
+}
