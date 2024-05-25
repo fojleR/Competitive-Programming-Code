@@ -20,9 +20,42 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
+ll n, w;
+
+ll dp[105][100005];
+
+ll dpSolve(vector< int > &weight, vector< int > &value, int pos, int val){
+    if(val == 0){
+        return 0;
+    }
+    if(val < 0 || pos == n){
+        return 1e15;
+    }
+    if(dp[pos][val] != -1){
+        return dp[pos][val];
+    }
+    ll ans = dpSolve(weight, value, pos + 1, val);
+    ans = min(ans, weight[pos] + dpSolve(weight, value, pos + 1, val - value[pos]));
+    return dp[pos][val] = ans;
+}
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    cin >> n >> w;
+    for(int i = 0; i <= n; i++){
+        for(int j = 0; j <= 1e5; j++){
+            dp[i][j] = - 1;
+        }
+    }
+    vector< int > weight(n), value(n);
+    for(int i = 0; i < n; i++){
+        cin >> weight[i] >> value[i];
+    }
+    for(int i = 1e5; i >= 0; i--){
+        if(dpSolve(weight, value, 0, i) <= w){
+            cout << i << endl;
+            return;
+        }
+    }
 }
 
 

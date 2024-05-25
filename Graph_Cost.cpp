@@ -22,14 +22,53 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    int n;
+    cin >> n;
+    int a[n];
+    for(int i = 0; i < n; i++) cin >> a[i];
+    stack< int > st1, st2;
+    int start = 0;
+    for(int i = 0; i < n; i++){
+        while(st1.size() > 1 && st1.top() > a[i]){
+            int vl = st1.top();
+            st1.pop();
+            if(st1.top() <= vl){
+                st2.pop();
+            }
+            else{
+                st1.push(vl);
+                break;
+            }
+        }
+        st1.push(a[i]);
+        st2.push(i);
+    }
+    ll lst = st1.top();
+    st1.pop();
+    ll j = st2.top();
+    st2.pop();
+    ll ans = 0;
+    //cout << lst << " " << j << endl;
+    while(!st1.empty()){
+        ll vl = st1.top();
+        st1.pop();
+        ll i = st2.top();
+        //cout << vl << " " << i << endl;
+        st2.pop();
+        ans += (j - i) * max(lst, vl);
+        lst = vl;
+        j = i;
+        //cout << ans << endl;
+    }
+    cout << ans << endl;
+    
 }
 
 
 int main(){
     fast
     int t = 1;
-    //cin >> t;
+    cin >> t;
     int cse = 0;
     while(t--){
         //cout << "Case " << ++cse << ": ";

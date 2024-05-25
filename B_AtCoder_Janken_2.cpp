@@ -22,7 +22,20 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    vector< string > v;
+    int n;
+    cin >> n;
+    ll tot = 0;
+    for(int i = 0; i < n; i++){
+        string ss;
+        ll c;
+        cin >> ss >> c;
+        tot += c;
+        v.push_back(ss);
+    }
+    sort(v.begin(), v.end());
+    int ind = tot % n;
+    cout << v[ind] << endl;
 }
 
 

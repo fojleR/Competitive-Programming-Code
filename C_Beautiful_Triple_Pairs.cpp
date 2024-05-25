@@ -9,28 +9,58 @@ using namespace std;
 #define PI              acos(-1.0)
 #define MEM(a,x)        memset(a,x,sizeof(a))
 #define fast           ios_base::sync_with_stdio(false);cin.tie(0);cout.tie(0);
-const int mx = 200005;
-const int mod = 1e9 + 7;
+const ll mx = 200005;
+const ll mod = 1e9 + 7;
 
 // ================================== take ip/op like vector,pairs directly!==================================
 template<typename typC,typename typD> istream &operator>>(istream &cin,pair<typC,typD> &a) { return cin>>a.first>>a.second; }
 template<typename typC> istream &operator>>(istream &cin,vector<typC> &a) { for (auto &x:a) cin>>x; return cin; }
 template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pair<typC,typD> &a) { return cout<<a.first<<' '<<a.second; }
 template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
-template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
+template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { ll n=a.size(); if (!n) return cout; cout<<a[0]; for (ll i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    ll n;
+    cin >> n;
+    ll a[n];
+    for(ll i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    map< tuple<ll, ll, ll>, ll > mp;
+    ll ans = 0;
+    for(ll i = 0; i < n - 2; i++){
+        vector< ll > tm;
+        tm.push_back(a[i]);
+        tm.push_back(a[i + 1]);
+        tm.push_back(a[i + 2]);
+        tuple<ll, ll, ll> t = make_tuple(tm[0], tm[1], tm[2]);
+        tuple<ll, ll, ll> tt = t;
+        get<0>(tt) = -1;
+        ans += mp[tt];
+        mp[tt]++;
+        tt = t;
+        get<1>(tt) = -1;
+        ans += mp[tt];
+        mp[tt]++;
+        tt = t;
+        get<2>(tt) = -1;
+        ans += mp[tt];
+        mp[tt]++;
+        ans -= 3 * mp[t];
+        mp[t]++;
+        //cout << i << " " << ans << endl;
+    }
+    cout << ans << endl;
 }
 
 
 int main(){
     fast
-    int t = 1;
-    //cin >> t;
-    int cse = 0;
+    ll t = 1;
+    cin >> t;
+    ll cse = 0;
     while(t--){
         //cout << "Case " << ++cse << ": ";
         solve();

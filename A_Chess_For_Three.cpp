@@ -22,14 +22,33 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    int a[3];
+    for(int i = 0; i < 3; i++){
+        cin >> a[i];
+    }
+    sort(a, a + 3);
+    int ans = 0;
+    while(a[0] && a[1] && a[0] + a[1] > a[2]){
+        a[0]--;
+        a[1]--;
+        ans++;
+    }
+    int tt = a[0] + a[1];
+    ans += tt;
+    a[2] -= tt;
+    if(a[2] % 2){
+        cout << -1 << endl;
+        return;
+    }
+    cout << ans << endl;
+
 }
 
 
 int main(){
     fast
     int t = 1;
-    //cin >> t;
+    cin >> t;
     int cse = 0;
     while(t--){
         //cout << "Case " << ++cse << ": ";

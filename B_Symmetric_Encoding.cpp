@@ -22,14 +22,36 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    set< char > st;
+    for(int i = 0; i < n; i++){
+        st.insert(s[i]);
+    }
+    string r;
+    for(auto x: st){
+        r += x;
+    }
+    int ln = r.size();
+    map< char, char > mp;
+    for(int i = 0; i < ln; i++){
+        mp[r[i]] = r[ln - i - 1];
+    }
+    string ans = "";
+    for(int i = 0; i < n; i++){
+        char x = s[i];
+        ans += mp[x];
+    }
+    cout << ans << endl;
 }
 
 
 int main(){
     fast
     int t = 1;
-    //cin >> t;
+    cin >> t;
     int cse = 0;
     while(t--){
         //cout << "Case " << ++cse << ": ";

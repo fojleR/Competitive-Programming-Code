@@ -22,7 +22,31 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    int n;
+    cin >> n;
+    vector< tuple< int, int, int > > v;
+    for(int i = 0; i < n; i++){
+        int a, b;
+        cin >> a >> b;
+        v.push_back({a, b, i});
+    }
+    sort(v.begin(), v.end());
+    priority_queue< pair< int, int > > pq;
+    for(auto x: v){
+        int cost = get<1>(x);
+        while(pq.size() && cost < pq.top().first){
+            pq.pop();
+        }
+        pq.push({cost, get<2>(x)});
+    }
+    cout << pq.size() << endl;
+    vector< int > ans;
+    while(pq.size()){
+        ans.push_back(pq.top().second + 1);
+        pq.pop();
+    }
+    sort(ans.begin(), ans.end());
+    cout << ans << endl;
 }
 
 

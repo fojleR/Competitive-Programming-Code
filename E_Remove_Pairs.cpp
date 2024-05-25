@@ -22,7 +22,20 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    int n;
+    cin >> n;
+    vector< pair< int, int > > v;
+    for(int i = 0; i < n; i++){
+        int x, y;
+        cin >> x >> y;
+        v.push_back({x, y});
+    }
+    sort(v.begin(), v.end(), [&](pair< int, int > a, pair< int, int > b){
+        return a.second < b.second;
+    });
+    for(auto x: v){
+        cout << x << endl;
+    }
 }
 
 

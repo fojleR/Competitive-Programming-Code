@@ -19,17 +19,46 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const pa
 template<typename typC,typename typD> ostream &operator<<(ostream &cout,const vector<pair<typC,typD>> &a) { for (auto &x:a) cout<<x<<'\n'; return cout; }
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
+ll n, w;
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    cin >> n >> w;
+    vector< int > weight(n), value(n);
+    ll sum = 0;
+    for(int i = 0; i < n; i++){
+        cin >> weight[i] >> value[i];
+        sum += value[i];
+    }
+    ll dp[100005];
+    for(int i = 0; i <= 1e5; i++){
+        dp[i] = 1e17;
+    }
+    dp[0] = 0;
+    for(int i  = 0; i < n; i++){
+        for(int j = sum; j >= 0; j--){
+            if(j - value[i] >= 0 && dp[j - value[i]] + weight[i] <= w * i){
+                dp[j] = min(dp[j], dp[j - value[i]] + weight[i]);
+            }
+        }
+    }
+    // for(int i = 0; i <= 20; i++){
+    //     cout << dp[i] << " ";
+    // }
+    // cout << endl;
+    for(int i = 1e5; i >= 0; i--){
+        if(dp[i] != 1e17){
+            cout << i << endl;
+            return;
+        }
+    }
 }
 
 
 int main(){
     fast
     int t = 1;
-    //cin >> t;
+    cin >> t;
     int cse = 0;
     while(t--){
         //cout << "Case " << ++cse << ": ";

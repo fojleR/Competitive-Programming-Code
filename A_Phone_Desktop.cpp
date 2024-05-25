@@ -22,14 +22,23 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    int x, y;
+    cin >> x >> y;
+    int t1 = (y + 1) / 2;
+    int ans = t1;
+    int total = t1 * 15;
+    total = total - y * 4;
+    x -= total;
+    x = max(0, x);
+    ans += (x + 14)/15;
+    cout << ans << endl;
 }
 
 
 int main(){
     fast
     int t = 1;
-    //cin >> t;
+    cin >> t;
     int cse = 0;
     while(t--){
         //cout << "Case " << ++cse << ": ";

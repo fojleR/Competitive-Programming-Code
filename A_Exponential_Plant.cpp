@@ -22,7 +22,15 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    cout << "Hello" << endl << "World" << endl;
+    ll n;
+    cin >> n;
+    ll tot = 0;
+    int cnt = 0;
+    while(tot <= n){
+        tot += pow(2, cnt);
+        cnt++;
+    }
+    cout << cnt << endl;
 }
 
 
