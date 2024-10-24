@@ -22,23 +22,10 @@ template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a)
 
 
 void solve(){
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-    int cnt1 = 0, cnt0 = 0;
-    for(int i = 0; i < n; i++){
-        if(s[i] == '0')cnt0++;
-        else cnt1++;
-    }
-    int x = min(cnt1, cnt0);
-    if(x % 2){
-        cout << "Zlatan" << endl;
-    }
-    else{
-        cout << "Ramos" << endl;
-    }
-    
+    int n, m;
+    cin >> n >> m;
+    ll totalGap = n * m;
+    cout << totalGap / 2 << endl;
 }
 
 

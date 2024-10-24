@@ -20,15 +20,35 @@ template<typename typC,typename typD> ostream &operator<<(ostream &cout,const ve
 template<typename typC> ostream &operator<<(ostream &cout,const vector<typC> &a) { int n=a.size(); if (!n) return cout; cout<<a[0]; for (int i=1; i<n; i++) cout<<' '<<a[i]; return cout; }
 // ===================================END Of the input module ==========================================
 
+ll divisorSum(ll x){
+    ll sum = 0;
+    for(ll i = 1; i * i<= x; i++){
+        if(x % i == 0){
+            sum += i;
+            sum += x / i;
+        }
+        if(x % i == 0 and x / i == i)sum -= i;
+    }
+    // cout << sum << endl;
+    sum -= x;
+    return sum;
+}
 
 void solve(){
-    string s;
-    cin >> s;
-    int cnt = 0;
-    for(int i = 0; i < s.size(); i++){
-        if(s[i] == 'X')cnt++;
+    ll n;
+    cin >> n;
+    ll a[n];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        // cout << divisorSum(a[i]) << endl;
+        if(divisorSum(a[i]) > a[i]){
+            cout << "abundant\n";
+        }
+        else if(divisorSum(a[i]) < a[i]){
+            cout << "deficient\n";
+        }
+        else cout << "perfect\n";
     }
-    cout << cnt << endl;
 }
 
 
